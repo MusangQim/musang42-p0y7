@@ -12,3 +12,9 @@ class Creature(ABC):
 
     def describe(self) -> str:
         return (f"{self.name} is a {self.type} type Creature")
+
+
+class Flameling(Creature):
+class Pyrodon(Creature):
+class Aquahub(Creature):
+class Torragon(Creature):
