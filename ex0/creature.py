@@ -15,6 +15,20 @@ class Creature(ABC):
 
 
 class Flameling(Creature):
+    def __init__(self, name="Flameling", type="Fire") -> None:
+        super().__init__(name, type)
+
+
 class Pyrodon(Creature):
+    def __init__(self, name="Pyrodon", type="Fire/Flying") -> None:
+        super().__init__(name, type)
+
+
 class Aquahub(Creature):
+    def __init__(self, name="Aquahub", type="Water") -> None:
+        super().__init__(name, type)
+
+
 class Torragon(Creature):
+    def __init__(self, name="Torragon", type="Water") -> None:
+        super().__init__(name, type)
