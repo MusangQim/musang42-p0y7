@@ -5,14 +5,20 @@ def test_factory(factory: CreatureFactory) -> None:
     base = factory.create_base()
     evolve = factory.create_evolved()
     print(base.describe())
+    print(base.attack())
     print(evolve.describe())
+    print(evolve.attack())
 
 
 def battle(factory_a: CreatureFactory, factory_b: CreatureFactory) -> None:
     play_1 = factory_a.create_base()
     play_2 = factory_b.create_base()
     print(play_1.describe())
+    print(" vs.")
     print(play_2.describe())
+    print(" fight!")
+    print(play_1.attack())
+    print(play_2.attack())
 
 
 def main() -> None:
@@ -22,8 +28,11 @@ def main() -> None:
     print("Testing factory")
     test_factory(flame)
 
-    print("Testing factory")
+    print("\nTesting factory")
     test_factory(aqua)
+
+    print("\nTesting battle")
+    battle(flame, aqua)
 
 
 if __name__ == "__main__":
