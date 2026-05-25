@@ -1,15 +1,20 @@
 from abc import ABC, abstractmethod
 
 
-class HealCapability():
-    def heal() -> str:
+class HealCapability(ABC):
+    @abstractmethod
+    def heals(self) -> str:
+        pass
 
 
-class TransfromCapability():
-    def __init__(self, transform: bool = False) -> None:
-        self.transform = transform
+class TransformCapability(ABC):
+    def __init__(self, transform: bool) -> None:
+        self.transformed = False
 
-    def transform() -> str:
+    @abstractmethod
+    def transform(self) -> str:
+        pass
 
-        
-    def revert() -> str:
+    @abstractmethod
+    def revert(self) -> str:
+        pass
