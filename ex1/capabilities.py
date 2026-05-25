@@ -8,7 +8,7 @@ class HealCapability(ABC):
 
 
 class TransformCapability(ABC):
-    def __init__(self, transform: bool) -> None:
+    def __init__(self) -> None:
         self.transformed = False
 
     @abstractmethod
