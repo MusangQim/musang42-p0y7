@@ -1,18 +1,51 @@
 from abc import ABC, abstractmethod
 from ex0.creature import Creature
 from ex1.capabilities import HealCapability, TransformCapability
+from typing import cast
+# using cast for simple way to counter mypy problem,
+# less code and not redundant
+
 
 class BattleStrategy(ABC):
     @abstractmethod
     def is_valid(self, creature: Creature) -> bool:
         pass
-    
+
     @abstractmethod
     def act(self, creature: Creature) -> None:
         pass
 
 
+class NormalStrategy(BattleStrategy):
+    def is_valid(self, creature: Creature) -> bool:
+        return True
 
-class NormalStrategy():
-class AggresiveStrategy():
-class DefensiveStrategy():
+    def act(self, creature: Creature) -> None:
+        print(creature.attack())
+
+
+class AggresiveStrategy(BattleStrategy):
+    def is_valid(self, creature: Creature) -> bool:
+        return isinstance(creature, TransformCapability)
+
+    def act(self, creature: Creature) -> None:
+        if not self.is_valid(creature):
+            raise Exception(f"Invalid Creature '{creature.name}'"
+                            f" for this aggresive strategy")
+        tc = cast(TransformCapability, creature)
+        print(tc.transform())
+        print(creature.attack())
+        print(tc.revert())
+
+
+class DefensiveStrategy(BattleStrategy):
+    def is_valid(self, creature: Creature) -> bool:
+        return isinstance(creature, HealCapability)
+
+    def act(self, creature: Creature) -> None:
+        if not self.is_valid(creature):
+            raise Exception(f"Invalid Creature '{creature.name}'"
+                            f" for this defensive strategy")
+        tc = cast(HealCapability, creature)
+        print(creature.attack())
+        print(tc.heal())
