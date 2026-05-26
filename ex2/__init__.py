@@ -1,3 +1,3 @@
-from ex2.strategy import NormalStrategy, AggresiveStrategy, DefensiveStrategy
+from ex2.strategy import NormalStrategy, AggressiveStrategy, DefensiveStrategy
 
-__all__ = ("NormalStrategy", "AggresiveStrategy", "DefensiveStrategy")
+__all__ = ("NormalStrategy", "AggressiveStrategy", "DefensiveStrategy")
